@@ -1,3 +1,7 @@
+package processor;
+
+import model.PaymentRequest;
+
 public class PaypalProcessor implements PaymentProcessor {
 
     @Override

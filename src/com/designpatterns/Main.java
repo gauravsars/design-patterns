@@ -1,3 +1,10 @@
+package com.designpatterns;
+
+import model.PaymentRequest;
+import processor.PaymentProcessor;
+import processor.StripeProcessor;
+import service.PaymentService;
+
 import java.math.BigDecimal;
 
 public class Main {
