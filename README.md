@@ -50,8 +50,9 @@ PaymentProcessorFactory
       ↓
 StripeProcessor
 
-Now client need not to do this.
+Problem Solved:
+Processor creation/selection is centralized in the Factory.
 
-new StripeProcessor();
-new RazorpayProcessor();
-new PaypalProcessor();
+Problem Remaining:
+PaymentRequest construction becomes difficult to maintain
+as the number of fields increases, especially optional fields.
