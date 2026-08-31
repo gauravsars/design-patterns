@@ -52,6 +52,8 @@ StripeProcessor
 
 Problem Solved:
 Processor creation/selection is centralized in the Factory.
+Now Client does not need to create/select the correct processor using the requestType in the paymentRequest Object.
+It is now delegated to Factory class , Factory class will identify the processor based on the requestType.
 
 Problem Remaining:
 PaymentRequest construction becomes difficult to maintain
