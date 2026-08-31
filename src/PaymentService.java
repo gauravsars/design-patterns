@@ -1,30 +1,13 @@
 public class PaymentService {
 
-    public void processPayment(
-            PaymentRequest request) {
+    private final PaymentProcessor processor;
 
-        if ("STRIPE".equalsIgnoreCase(
-                request.getPaymentType())) {
+    public PaymentService(PaymentProcessor processor) {
+        this.processor = processor;
+    }
 
-            System.out.println(
-                    "Processing payment through Stripe");
+    public void processPayment(PaymentRequest request) {
 
-        } else if ("RAZORPAY".equalsIgnoreCase(
-                request.getPaymentType())) {
-
-            System.out.println(
-                    "Processing payment through Razorpay");
-
-        } else if ("PAYPAL".equalsIgnoreCase(
-                request.getPaymentType())) {
-
-            System.out.println(
-                    "Processing payment through PayPal");
-
-        } else {
-
-            throw new IllegalArgumentException(
-                    "Unsupported payment type");
-        }
+        processor.processPayment(request);
     }
 }

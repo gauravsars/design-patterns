@@ -11,8 +11,11 @@ public class Main {
                         new BigDecimal("5000"),
                         "INR");
 
+        PaymentProcessor processor =
+                new StripeProcessor();
+
         PaymentService paymentService =
-                new PaymentService();
+                new PaymentService(processor);
 
         paymentService.processPayment(request);
     }
