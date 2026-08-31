@@ -1,8 +1,6 @@
 package com.designpatterns;
 
 import model.PaymentRequest;
-import processor.PaymentProcessor;
-import processor.StripeProcessor;
 import service.PaymentService;
 
 import java.math.BigDecimal;
@@ -10,19 +8,17 @@ import java.math.BigDecimal;
 public class Main {
 
     public static void main(String[] args) {
-
+	// In V4 we will create paymentRequest using builder design pattern.
         PaymentRequest request =
                 new PaymentRequest(
                         "C101",
-                        "STRIPE",
+                        "RAZORPAY",
                         new BigDecimal("5000"),
                         "INR");
 
-        PaymentProcessor processor =
-                new StripeProcessor();
 
         PaymentService paymentService =
-                new PaymentService(processor);
+                new PaymentService();
 
         paymentService.processPayment(request);
     }

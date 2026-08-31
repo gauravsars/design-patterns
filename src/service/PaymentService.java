@@ -1,18 +1,20 @@
 package service;
 
 import model.PaymentRequest;
-import processor.PaymentProcessor;
+import processor.strategy.PaymentProcessor;
+import factory.PaymentProcessorFactory;
 
 public class PaymentService {
 
-    private final PaymentProcessor processor;
+    public void processPayment(
+            PaymentRequest request) {
+        //Identify the processor to process the request based on the payment type.
+        PaymentProcessor processor =
+                PaymentProcessorFactory
+                        .getProcessor(
+                                request.getPaymentType());
 
-    public PaymentService(PaymentProcessor processor) {
-        this.processor = processor;
-    }
-
-    public void processPayment(PaymentRequest request) {
-
+        //Process the payment request using the identified processor.
         processor.processPayment(request);
     }
 }
