@@ -10,15 +10,12 @@ public class PaymentRequest {
     private String currency;
 
     public PaymentRequest(
-            String customerId,
-            String paymentType,
-            BigDecimal amount,
-            String currency) {
+            Builder builder) {
 
-        this.customerId = customerId;
-        this.paymentType = paymentType;
-        this.amount = amount;
-        this.currency = currency;
+        this.customerId = builder.customerId;
+        this.paymentType = builder.paymentType;
+        this.amount = builder.amount;
+        this.currency = builder.currency;
     }
 
     public String getCustomerId() {
@@ -36,4 +33,41 @@ public class PaymentRequest {
     public String getCurrency() {
         return currency;
     }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+
+        private String customerId;
+        private String paymentType;
+        private BigDecimal amount;
+        private String currency;
+
+        public Builder customerId(String customerId) {
+            this.customerId = customerId;
+            return this;
+        }
+
+        public Builder paymentType(String paymentType) {
+            this.paymentType = paymentType;
+            return this;
+        }
+
+        public Builder amount(BigDecimal amount) {
+            this.amount = amount;
+            return this;
+        }
+
+        public Builder currency(String currency) {
+            this.currency = currency;
+            return this;
+        }
+
+        public PaymentRequest build() {
+            return new PaymentRequest(this);
+        }
+    }
+
 }

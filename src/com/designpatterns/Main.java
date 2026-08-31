@@ -9,12 +9,20 @@ public class Main {
 
     public static void main(String[] args) {
 	// In V4 we will create paymentRequest using builder design pattern.
+//        PaymentRequest request =
+//                new PaymentRequest(
+//                        "C101",
+//                        "RAZORPAY",
+//                        new BigDecimal("5000"),
+//                        "INR");
+
         PaymentRequest request =
-                new PaymentRequest(
-                        "C101",
-                        "RAZORPAY",
-                        new BigDecimal("5000"),
-                        "INR");
+                PaymentRequest.builder()
+                        .customerId("C101")
+                        .paymentType("STRIPE")
+                        .amount(new BigDecimal("5000"))
+                        .currency("INR")
+                        .build();
 
 
         PaymentService paymentService =
