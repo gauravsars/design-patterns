@@ -58,3 +58,49 @@ It is now delegated to Factory class , Factory class will identify the processor
 Problem Remaining:
 PaymentRequest construction becomes difficult to maintain
 as the number of fields increases, especially optional fields.
+
+
+****************************************************************************************************************
+****************************************************************************************************************
+
+Version 4 — Builder Pattern
+
+PaymentRequest.builder()
+        ↓
+customerId(...)
+paymentType(...)
+amount(...)
+currency(...)
+        ↓
+build()
+        ↓
+PaymentRequest
+
+Problem Solved:
+Complex PaymentRequest objects can be created in a
+readable and maintainable way, especially with optional fields.
+
+Problem Remaining:
+Payment validation logic can become more complex when multiple independent validations need to run before payment processing.
+
+Suppose before processing payment we need to validate on the below checks:
+
+Fraud Check
+Limit Check
+Currency Check
+Customer Status Check
+Blacklist Check
+
+one solution is to write it into validation class and call from PaymentService
+
+if (fraud...) ...
+if (limit...) ...
+if (currency...) ...
+if (customer...) ...
+if (blacklist...) ...
+
+ V5 will address this only
+
+How to address Multiple sequential validations cleanly.
+****************************************************************************************************************
+****************************************************************************************************************
